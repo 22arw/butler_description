@@ -1,9 +1,13 @@
 <?xml version="1.0" ?>
 <robot name="butler" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+<xacro:property name="cameraSize" value="0.05"/>
+<xacro:property name="cameraMass" value="0.1"/>
+
 <xacro:include filename="$(find butler_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find butler_description)/urdf/butler.trans" />
 <xacro:include filename="$(find butler_description)/urdf/butler.gazebo" />
+
 <link name="base_link">
   <inertial>
     <origin rpy="0 0 0" xyz="-0.00522601417957124 0.0031954826968695117 0.20699123641725392"/>
@@ -1486,5 +1490,36 @@
   <parent link="Caster_22455T16_c_holder_v1_1"/>
   <child link="Caster_22455T16_c_rod_v1_1"/>
 </joint>
+
+<link name="camera">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <inertial>
+      <mass value="${cameraMass}" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="-0.4 0.0005 0.04" rpy="0 0 1.57"/>
+    <parent link="Upper_Plate_v95__2__1"/>
+    <child link="camera"/>
+  </joint>
 
 </robot>
