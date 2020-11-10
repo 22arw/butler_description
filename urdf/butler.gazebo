@@ -491,8 +491,6 @@
   </sensor>
 </gazebo>
 
-</robot>
-
 <!-- hokuyo tail-->
  <gazebo reference="laser_tail">
    <sensor type="ray" name="tail_hokuyo_sensor">
