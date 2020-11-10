@@ -1404,6 +1404,7 @@
 </joint>
 
 <joint name="Rigid44" type="fixed">
+  <axis xyz="0 1 0" />
   <origin rpy="0 0 0" xyz="-0.117824 -0.005002 0.00635"/>
   <parent link="Upper_Plate_v95__1__1"/>
   <child link="LIDAR_M1M1_v2_1"/>
@@ -1449,7 +1450,7 @@
   <origin rpy="0 0 0" xyz="0.051 0.000287 -0.057125"/>
   <parent link="butler_motor_v1_1"/>
   <child link="butler_tire_v1_1"/>
-  <axis xyz="1.0 0.0 -0.0"/>
+  <axis xyz="-1.0 0.0 0.0"/>
 </joint>
 
 <joint name="Rigid53" type="fixed">
@@ -1492,28 +1493,28 @@
 </joint>
 
 <link name="camera">
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
-      </geometry>
-    </collision>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+    </geometry>
+  </collision>
 
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
-      </geometry>
-      <material name="green"/>
-    </visual>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+    </geometry>
+    <material name="green"/>
+  </visual>
 
-    <inertial>
-      <mass value="${cameraMass}" />
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
-      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
-    </inertial>
-  </link>
+  <inertial>
+    <mass value="${cameraMass}" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
+    <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+  </inertial>
+</link>
 
   <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0" />
@@ -1521,5 +1522,61 @@
     <parent link="Upper_Plate_v95__2__1"/>
     <child link="camera"/>
   </joint>
+
+  <joint name="laser_joint_tail" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin rpy="0 0 -1.57" xyz="0.31 -0.72 0.04"/>
+    <parent link="Upper_Plate_v95_1"/>
+    <child link="laser_tail"/>
+  </joint>
+
+  <!-- Hokuyo Laser -->
+  <link name="laser_tail">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://butler_description/meshes/laser_hokuyo.dae"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="laser_joint_head" type="fixed">
+    <axis xyz="0 1 0" />
+  <origin rpy="0 0 1.57" xyz="0.31 0 0.04"/>
+  <parent link="Upper_Plate_v95_1"/>
+  <child link="laser_head"/>
+  </joint>
+
+  <!-- Hokuyo Laser -->
+  <link name="laser_head">
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+  <box size="0.1 0.1 0.1"/>
+    </geometry>
+  </collision>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/laser_hokuyo.dae"/>
+    </geometry>
+  </visual>
+  <inertial>
+    <mass value="1e-5" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+  </inertial>
+  </link>
 
 </robot>
