@@ -426,9 +426,9 @@
     <!-- Plugin update rate in Hz -->
     <updateRate>0.0</updateRate>
     <!-- Name of left joint, defaults to `left_joint` -->
-    <leftJoint>Rev52</leftJoint>
+    <leftJoint>Rev54</leftJoint>
     <!-- Name of right joint, defaults to `right_joint` -->
-    <rightJoint>Rev54</rightJoint>
+    <rightJoint>Rev52</rightJoint>
     <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
     <wheelSeparation>0.675452</wheelSeparation>
     <!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
