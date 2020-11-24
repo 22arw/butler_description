@@ -491,48 +491,6 @@
   </collision>
 </link>
 
-<link name="GAU-LP-3L-UVC-T8-V1_3ft_Light_v5__1__1">
-  <inertial>
-    <origin rpy="0 0 0" xyz="0.030434930745823596 1.8742240127933574e-07 0.44743182523617936"/>
-    <mass value="2.6048863345120696"/>
-    <inertia ixx="0.199966" ixy="-0.0" ixz="0.001051" iyy="0.20026" iyz="0.0" izz="0.002331"/>
-  </inertial>
-  <visual>
-    <origin rpy="0 0 0" xyz="-0.34835 0.121336 -0.349551"/>
-    <geometry>
-      <mesh filename="package://butler_description/meshes/GAU-LP-3L-UVC-T8-V1_3ft_Light_v5__1__1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-    <material name="silver"/>
-  </visual>
-  <collision>
-    <origin rpy="0 0 0" xyz="-0.34835 0.121336 -0.349551"/>
-    <geometry>
-      <mesh filename="package://butler_description/meshes/GAU-LP-3L-UVC-T8-V1_3ft_Light_v5__1__1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
-</link>
-
-<link name="GAU-LP-3L-UVC-T8-V1_3ft_Light_v5_1">
-  <inertial>
-    <origin rpy="0 0 0" xyz="-0.030434352859068814 1.8742239775437763e-07 0.4474318252361786"/>
-    <mass value="2.6048863345120696"/>
-    <inertia ixx="0.199966" ixy="-0.0" ixz="-0.001051" iyy="0.20026" iyz="-0.0" izz="0.002331"/>
-  </inertial>
-  <visual>
-    <origin rpy="0 0 0" xyz="0.358866 0.121336 -0.349551"/>
-    <geometry>
-      <mesh filename="package://butler_description/meshes/GAU-LP-3L-UVC-T8-V1_3ft_Light_v5_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-    <material name="silver"/>
-  </visual>
-  <collision>
-    <origin rpy="0 0 0" xyz="0.358866 0.121336 -0.349551"/>
-    <geometry>
-      <mesh filename="package://butler_description/meshes/GAU-LP-3L-UVC-T8-V1_3ft_Light_v5_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
-</link>
-
 <link name="Upper_Plate_v95__1__1">
   <inertial>
     <origin rpy="0 0 0" xyz="-0.1443323016108768 0.3563089215790164 0.0031750124172527094"/>
@@ -701,27 +659,6 @@
   </collision>
 </link>
 
-<link name="GAU-LP-3L-UVC-T8-V1_2ft_v5_1">
-  <inertial>
-    <origin rpy="0 0 0" xyz="0.03043493074582443 1.8742237754831859e-07 0.34452233580782665"/>
-    <mass value="2.005762477574293"/>
-    <inertia ixx="0.091611" ixy="-0.0" ixz="0.000623" iyy="0.091837" iyz="0.0" izz="0.001795"/>
-  </inertial>
-  <visual>
-    <origin rpy="0 0 0" xyz="-0.34835 0.121336 -1.442672"/>
-    <geometry>
-      <mesh filename="package://butler_description/meshes/GAU-LP-3L-UVC-T8-V1_2ft_v5_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-    <material name="silver"/>
-  </visual>
-  <collision>
-    <origin rpy="0 0 0" xyz="-0.34835 0.121336 -1.442672"/>
-    <geometry>
-      <mesh filename="package://butler_description/meshes/GAU-LP-3L-UVC-T8-V1_2ft_v5_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
-</link>
-
 <link name="gusset_4_1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.005439206460333579 4.860079913515669e-07 0.018139674305065023"/>
@@ -760,27 +697,6 @@
     <origin rpy="0 0 0" xyz="0.346366 0.117016 -1.442672"/>
     <geometry>
       <mesh filename="package://butler_description/meshes/25-2525-BLACK-FB_v5__1__1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
-</link>
-
-<link name="GAU-LP-3L-UVC-T8-V1_2ft_v5__1__1">
-  <inertial>
-    <origin rpy="0 0 0" xyz="-0.03043435285906787 1.8742237396784933e-07 0.3445223358078262"/>
-    <mass value="2.005762477574293"/>
-    <inertia ixx="0.091611" ixy="-0.0" ixz="-0.000623" iyy="0.091837" iyz="-0.0" izz="0.001795"/>
-  </inertial>
-  <visual>
-    <origin rpy="0 0 0" xyz="0.358866 0.121336 -1.442672"/>
-    <geometry>
-      <mesh filename="package://butler_description/meshes/GAU-LP-3L-UVC-T8-V1_2ft_v5__1__1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-    <material name="silver"/>
-  </visual>
-  <collision>
-    <origin rpy="0 0 0" xyz="0.358866 0.121336 -1.442672"/>
-    <geometry>
-      <mesh filename="package://butler_description/meshes/GAU-LP-3L-UVC-T8-V1_2ft_v5__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -1163,6 +1079,90 @@
   </collision>
 </link>
 
+<link name="3ft_light_fixture_v1__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.5309020692540334 -0.07337799454852041 0.8260446180764844"/>
+    <mass value="2.60488633452387"/>
+    <inertia ixx="0.199966" ixy="0.0" ixz="-0.001051" iyy="0.20026" iyz="0.0" izz="0.002331"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.909687 0.025533 0.0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/3ft_light_fixture_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.909687 0.025533 0.0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/3ft_light_fixture_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="3ft_light_fixture_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.2989873528592129 -0.1244439945483815 0.8260446180764848"/>
+    <mass value="2.60488633452387"/>
+    <inertia ixx="0.199966" ixy="0.0" ixz="0.001051" iyy="0.20026" iyz="0.0" izz="0.002331"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.909687 -0.025533 0.0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/3ft_light_fixture_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.909687 -0.025533 0.0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/3ft_light_fixture_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="2ft_light_fixture_v1__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.5279810692540323 -0.07337799454854385 1.809571916294862"/>
+    <mass value="2.0057624775833927"/>
+    <inertia ixx="0.091611" ixy="0.0" ixz="-0.000623" iyy="0.091837" iyz="0.0" izz="0.001795"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.906766 0.025533 0.0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/2ft_light_fixture_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.906766 0.025533 0.0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/2ft_light_fixture_v1__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="2ft_light_fixture_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.2960663528592116 -0.12444399454840412 1.8095719162948618"/>
+    <mass value="2.0057624775833927"/>
+    <inertia ixx="0.091611" ixy="0.0" ixz="0.000623" iyy="0.091837" iyz="-0.0" izz="0.001795"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.906766 -0.025533 0.0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/2ft_light_fixture_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.906766 -0.025533 0.0"/>
+    <geometry>
+      <mesh filename="package://butler_description/meshes/2ft_light_fixture_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
 <joint name="Rigid1" type="fixed">
   <origin rpy="0 0 0" xyz="-0.317758 0.297776 0.210166"/>
   <parent link="base_link"/>
@@ -1295,18 +1295,6 @@
   <child link="25-2525-BLACK-FB-3ft_v4_1"/>
 </joint>
 
-<joint name="Rigid26" type="fixed">
-  <origin rpy="0 0 0" xyz="0.0125 -0.00432 0.0"/>
-  <parent link="25-2525-BLACK-FB-3ft_v4_1"/>
-  <child link="GAU-LP-3L-UVC-T8-V1_3ft_Light_v5__1__1"/>
-</joint>
-
-<joint name="Rigid27" type="fixed">
-  <origin rpy="0 0 0" xyz="-0.0125 -0.00432 0.0"/>
-  <parent link="25-2525-BLACK-FB-3ft_v4__1__1"/>
-  <child link="GAU-LP-3L-UVC-T8-V1_3ft_Light_v5_1"/>
-</joint>
-
 <joint name="Rigid28" type="fixed">
   <origin rpy="0 0 0" xyz="0.0 0.0 1.086771"/>
   <parent link="extrusion_long_2_2"/>
@@ -1355,12 +1343,6 @@
   <child link="25-2525-BLACK-FB_v5_1"/>
 </joint>
 
-<joint name="Rigid36" type="fixed">
-  <origin rpy="0 0 0" xyz="0.0125 -0.00432 0.0"/>
-  <parent link="25-2525-BLACK-FB_v5_1"/>
-  <child link="GAU-LP-3L-UVC-T8-V1_2ft_v5_1"/>
-</joint>
-
 <joint name="Rigid37" type="fixed">
   <origin rpy="0 0 0" xyz="-0.459869 0.297649 0.00635"/>
   <parent link="Upper_Plate_v95__1__1"/>
@@ -1371,12 +1353,6 @@
   <origin rpy="0 0 0" xyz="-0.485432 0.299706 0.00635"/>
   <parent link="Upper_Plate_v95__1__1"/>
   <child link="25-2525-BLACK-FB_v5__1__1"/>
-</joint>
-
-<joint name="Rigid39" type="fixed">
-  <origin rpy="0 0 0" xyz="-0.0125 -0.00432 0.0"/>
-  <parent link="25-2525-BLACK-FB_v5__1__1"/>
-  <child link="GAU-LP-3L-UVC-T8-V1_2ft_v5__1__1"/>
 </joint>
 
 <joint name="Rigid40" type="fixed">
@@ -1490,6 +1466,30 @@
   <origin rpy="0 0 0" xyz="-0.037274 -0.0381 -0.0762"/>
   <parent link="Caster_22455T16_c_holder_v1_1"/>
   <child link="Caster_22455T16_c_rod_v1_1"/>
+</joint>
+
+<joint name="Rigid60" type="fixed">
+  <origin rpy="0 0 0" xyz="0.573837 0.091483 -0.349551"/>
+  <parent link="25-2525-BLACK-FB-3ft_v4_1"/>
+  <child link="3ft_light_fixture_v1__1__1"/>
+</joint>
+
+<joint name="Rigid61" type="fixed">
+  <origin rpy="0 0 0" xyz="1.256053 0.142549 -0.349551"/>
+  <parent link="25-2525-BLACK-FB-3ft_v4__1__1"/>
+  <child link="3ft_light_fixture_v1_1"/>
+</joint>
+
+<joint name="Rigid62" type="fixed">
+  <origin rpy="0 0 0" xyz="0.570916 0.091483 -1.442672"/>
+  <parent link="25-2525-BLACK-FB_v5_1"/>
+  <child link="2ft_light_fixture_v1__1__1"/>
+</joint>
+
+<joint name="Rigid63" type="fixed">
+  <origin rpy="0 0 0" xyz="1.253132 0.142549 -1.442672"/>
+  <parent link="25-2525-BLACK-FB_v5__1__1"/>
+  <child link="2ft_light_fixture_v1_1"/>
 </joint>
 
 <link name="camera">
