@@ -8,7 +8,7 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="-1.1252E-06 0.32919 0.0012512"
+        xyz="0.0238969108524964 0.0064934223239613 0.20470967877878"
         rpy="0 0 0" />
       <mass
         value="32.099" />
@@ -183,10 +183,9 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="1.57 0 0" />
       <geometry>
-        <mesh
-          filename="package://butler_description/meshes/right_wheel.STL" />
+        <cylinder radius="0.08" length="0.03175"/>
       </geometry>
     </collision>
   </link>
@@ -448,10 +447,9 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="-1.57 0 0" />
       <geometry>
-        <mesh
-          filename="package://butler_description/meshes/left_wheel.STL" />
+        <cylinder radius="0.08" length="0.03175"/>
       </geometry>
     </collision>
   </link>
@@ -466,7 +464,7 @@
     <child
       link="left_wheel" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
   </joint>
   <link
     name="back_left_swivel">
@@ -503,8 +501,8 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://butler_description/meshes/back_left_swivel.STL" />
+	<mesh
+        filename="package://butler_description/meshes/back_left_swivel.STL" />
       </geometry>
     </collision>
   </link>
@@ -632,6 +630,62 @@
       effort="0"
       velocity="0" />
   </joint>
+
+  <transmission name="right_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="right_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="base_link_right_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="left_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="left_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="base_link_left_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <gazebo reference="front_laser">
+    <sensor type="ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <max>30</max>
+          <min>0.10</min>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/front_laser_scan</topicName>
+        <frameName>front_laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
