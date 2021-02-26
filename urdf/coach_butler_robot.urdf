@@ -746,12 +746,6 @@
     </sensor>
   </gazebo>
 
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/</robotNamespace>
-    </plugin>
-  </gazebo>
-
   <gazebo reference="rear_laser">
     <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
@@ -793,5 +787,6 @@
       <robotNamespace>/</robotNamespace>
     </plugin>
   </gazebo>
+
 
 </robot>
