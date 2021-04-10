@@ -183,7 +183,7 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="1.57 0 0" />
         <geometry>
           <cylinder radius="0.08" length="0.03175"/>
         </geometry>
@@ -447,7 +447,7 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="-1.57 0 0" />
         <geometry>
           <cylinder radius="0.08" length="0.03175"/>
         </geometry>
@@ -632,6 +632,95 @@
      velocity="0" />
  </joint>
 
+ <link
+   name="rear_laser">
+   <inertial>
+     <origin
+       xyz="-0.00064881 3.9624E-06 -0.0052873"
+       rpy="0 0 0" />
+     <mass
+       value="0.36783" />
+     <inertia
+       ixx="9.1717E-05"
+       ixy="8.8216E-09"
+       ixz="1.2087E-06"
+       iyy="9.3129E-05"
+       iyz="-3.27E-11"
+       izz="0.00012343" />
+   </inertial>
+   <visual>
+     <origin
+       xyz="0 0 0"
+       rpy="0 0 0" />
+     <geometry>
+       <mesh
+         filename="package://butler_description/meshes/rear_laser.STL" />
+     </geometry>
+     <material
+       name="">
+       <color
+         rgba="0.89804 0.91765 0.92941 1" />
+     </material>
+   </visual>
+   <collision>
+     <origin
+       xyz="0 0 0"
+       rpy="0 0 0" />
+     <geometry>
+       <mesh
+         filename="package://butler_description/meshes/rear_laser.STL" />
+     </geometry>
+   </collision>
+ </link>
+ <joint
+   name="base_link_rear_laser"
+   type="revolute">
+   <origin
+     xyz="-0.38239 0 0.15967"
+     rpy="0 0 3.14" />
+   <parent
+     link="base_link" />
+   <child
+     link="rear_laser" />
+   <axis
+     xyz="0 0 -1" />
+   <limit
+     lower="0"
+     upper="0"
+     effort="0"
+     velocity="0" />
+ </joint>
+
+ <link name="front_camera">
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.05 0.05 0.05"/>
+     </geometry>
+   </collision>
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.05 0.05 0.05"/>
+     </geometry>
+     <material name="green"/>
+   </visual>
+   <inertial>
+     <mass value="0.1" />
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <box_inertia m="0.1" x="0.05" y="0.05" z="0.05" />
+     <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+   </inertial>
+  </link>
+
+  <joint name="base_link_front_camera" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.35239 0 1.32"
+      rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="front_camera"/>
+   </joint>
+
   <transmission name="right_wheel_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="right_wheel_motor">
@@ -688,9 +777,76 @@
    </sensor>
  </gazebo>
 
+ <gazebo reference="rear_laser">
+     <sensor type="ray" name="head_hokuyo_sensor">
+       <pose>0 0 0 0 0 0</pose>
+       <visualize>true</visualize>
+       <update_rate>40</update_rate>
+       <ray>
+         <scan>
+           <horizontal>
+             <samples>360</samples>
+             <resolution>1</resolution>
+             <min_angle>-1.570796</min_angle>
+             <max_angle>1.570796</max_angle>
+           </horizontal>
+         </scan>
+         <range>
+           <max>30</max>
+           <min>0.10</min>
+           <resolution>0.01</resolution>
+         </range>
+         <noise>
+           <type>gaussian</type>
+
+           <mean>0.0</mean>
+           <stddev>0.01</stddev>
+         </noise>
+       </ray>
+       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+         <topicName>/rear_laser_scan</topicName>
+         <frameName>rear_laser</frameName>
+       </plugin>
+     </sensor>
+   </gazebo>
+
+   <gazebo reference="front_camera">
+     <material>Gazebo/Green</material>
+     <sensor type="camera" name="camera1">
+       <update_rate>30.0</update_rate>
+       <camera name="head">
+         <horizontal_fov>1.3962634</horizontal_fov>
+         <image>
+           <width>800</width>
+           <height>800</height>
+           <format>R8G8B8</format>
+         </image>
+         <clip>
+           <near>0.02</near>
+           <far>300</far>
+         </clip>
+       </camera>
+       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+         <alwaysOn>true</alwaysOn>
+         <updateRate>0.0</updateRate>
+         <cameraName>butler/camera1</cameraName>
+         <imageTopicName>image_raw</imageTopicName>
+         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+         <frameName>front_camera</frameName>
+         <hackBaseline>0.07</hackBaseline>
+         <distortionK1>0.0</distortionK1>
+         <distortionK2>0.0</distortionK2>
+         <distortionK3>0.0</distortionK3>
+         <distortionT1>0.0</distortionT1>
+         <distortionT2>0.0</distortionT2>
+       </plugin>
+     </sensor>
+   </gazebo>
+
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
   </gazebo>
 
