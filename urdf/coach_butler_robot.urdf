@@ -9,7 +9,7 @@
     <inertial>
       <origin
         xyz="-1.06551968085109E-10 -8.06828802844026E-07 0.234819567511574"
-        rpy="0 0 1.57" />
+        rpy="0 0 1.57" /> <!-- roll pitch yaw: 1.57 radians-->
       <mass
         value="44.766149285195" />
       <inertia
@@ -572,7 +572,7 @@
     <axis
       xyz="0 -1 0" />
   </joint>
-
+<!-- Start of Sensor Links -->
   <link
    name="front_laser">
    <inertial>
@@ -613,6 +613,7 @@
      </geometry>
    </collision>
  </link>
+<!-- Front Laser Joint -->
  <joint
    name="base_link_front_laser"
    type="revolute">
@@ -672,6 +673,7 @@
      </geometry>
    </collision>
  </link>
+<!-- Rear Laser Joint -->
  <joint
    name="base_link_rear_laser"
    type="revolute">
@@ -712,7 +714,7 @@
      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
    </inertial>
   </link>
-
+<!-- Camera Joint -->
   <joint name="base_link_front_camera" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0.35239 0 1.32"
@@ -720,7 +722,9 @@
     <parent link="base_link"/>
     <child link="front_camera"/>
    </joint>
+<!-- End of Sensor Links -->
 
+<!-- Activate Right Wheel Transmission use of ROS CONTROL -->
   <transmission name="right_wheel_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="right_wheel_motor">
@@ -731,6 +735,7 @@
     </joint>
   </transmission>
 
+<!-- Activate Left Wheel Transmission for use of ROS CONTROL -->
   <transmission name="left_wheel_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="left_wheel_motor">
@@ -741,7 +746,8 @@
     </joint>
   </transmission>
 
-  <gazebo reference="front_laser">
+<!-- Gazebo Plugin for front_laser-->
+ <gazebo reference="front_laser">
    <sensor type="ray" name="head_hokuyo_sensor">
      <pose>0 0 0 0 0 0</pose>
      <visualize>true</visualize>
@@ -777,6 +783,7 @@
    </sensor>
  </gazebo>
 
+<!-- Gazebo Plugin for rear_laser-->
  <gazebo reference="rear_laser">
      <sensor type="ray" name="head_hokuyo_sensor">
        <pose>0 0 0 0 0 0</pose>
@@ -810,8 +817,9 @@
      </sensor>
    </gazebo>
 
-   <gazebo reference="front_camera">
-     <material>Gazebo/Green</material>
+<!-- Gazebo Plugin for front_camera-->
+  <gazebo reference="front_camera">
+    <material>Gazebo/Green</material>
      <sensor type="camera" name="camera1">
        <update_rate>30.0</update_rate>
        <camera name="head">
@@ -843,6 +851,19 @@
      </sensor>
    </gazebo>
 
+<!-- Gazebo Plugin for IMU-->
+<gazebo>
+   <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+     <alwaysOn>true</alwaysOn>
+     <bodyName>base_link</bodyName>
+     <topicName>imu</topicName>
+     <serviceName>imu_service</serviceName>
+     <gaussianNoise>0.0</gaussianNoise>
+     <updateRate>20.0</updateRate>
+   </plugin>
+ </gazebo>
+
+<!-- Gazebo ROS Control to Simulate Robot's Controllers-->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/</robotNamespace>
